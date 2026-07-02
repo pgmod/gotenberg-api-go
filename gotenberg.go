@@ -53,7 +53,7 @@ func (c *Client) DocxToPdf(docx []byte, filename string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	if resp.IsError() {
+	if resp.IsStatusFailure() {
 		return nil, httpError(resp)
 	}
 	return resp.Bytes(), nil
@@ -70,7 +70,7 @@ func (c *Client) HTMLToPdf(html []byte) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	if resp.IsError() {
+	if resp.IsStatusFailure() {
 		return nil, httpError(resp)
 	}
 	return resp.Bytes(), nil
